@@ -8,6 +8,8 @@ import ContactUs from '@site/components/ContactUs.mdx';
 
 Welcome! This is the starting point for all the documentation in NEAR.
 
+<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/9a67f4eac197159cd85f8f6b6/3fe7df0bdd31540f5f40711dd.js");</script>
+
 <div class="container">
   <div class="row">
     <div class="col col--6">
