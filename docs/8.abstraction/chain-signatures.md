@@ -15,12 +15,12 @@ In this document we cover the steps necessary to sign a transaction for another 
 
 See our [web-app example](https://github.com/near-examples/near-multichain) and [component example](https://test.near.social/md1.testnet/widget/chainsig-sign-eth-tx) showing how a NEAR account can create an Ethereum testnet transaction.
 
-::: 
+:::
 
 ---
 
-## Create the Payload
-The first step is to use Chain Signatures is to construct a payload (transaction, message, data, etc.) for the target blockchain platform. This variates depending on the target blockchain, but in general, it's a hash of the message or transaction to be signed.
+## Create a Payload
+The first step is to use Chain Signatures is to construct a payload (transaction, message, data, etc.) for the target blockchain platform. This varies depending on the target blockchain, but in general, it's a hash of the message or transaction to be signed.
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">
@@ -43,7 +43,7 @@ console.log("Coming soon...")
 ---
 
 ## Request & Reconstruct a Signature 
-Once a payload is created and ready to sign, a signature request is made by calling `sign` on the [MPC smart contract](../1.concepts/abstraction/chain-signatures.md#2-signature-request). 
+Once a payload is created and ready to sign, a signature request is made by calling `sign` on the [MPC smart contract](../1.concepts/abstraction/chain-signatures.md#2-signature-request).
 
 The method expects the `payload` to be signed for the target blockchain, and a `path` representing the account that should be used to sign the payload (learn more [here](../1.concepts/abstraction/chain-signatures.md#2-signature-request)).
 

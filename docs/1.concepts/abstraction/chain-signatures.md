@@ -25,18 +25,10 @@ _Diagram of a chain signature in NEAR_
 
 There are four steps involved on Chain Signatures:
 
-1. [Create a Payload](#1-create-a-payload) - The user creates the transaction / message they want to sign
+1. [Create a Payload](/abstraction/chain-signatures/#create-a-payload) - The user creates the transaction / message they want to sign
 2. [Signature Request](#2-request-signature) - The user calls the NEAR `multichain` contract, requesting to sign the transaction
 3. [MPC Signing Service](#3-sign-with-mpc) - A service captures the call, and returns the signed the transaction for the user
 4. [Relay Signed Payload](#4-relaying-the-signature) - The signed payload is then sent to the destination chain for execution.
-
-<hr class="subsection" />
-
-### 1. Create Payload
-
-The first step is to construct a payload (transaction, message, data, etc.) for the target blockchain platform. This variates depending on the target blockchain, but in general, it's a hash of the message or transaction to be signed.
-
-<hr class="subsection" />
 
 ### 2. Signature Request
 
