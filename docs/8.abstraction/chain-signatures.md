@@ -19,7 +19,8 @@ See our [web-app example](https://github.com/near-examples/near-multichain) and 
 
 ---
 
-## Create a Payload
+## 1. Create a Payload
+
 The first step is to use Chain Signatures is to construct a payload (transaction, message, data, etc.) for the target blockchain platform. This varies depending on the target blockchain, but in general, it's a hash of the message or transaction to be signed.
 
 <Tabs groupId="code-tabs">
@@ -42,10 +43,18 @@ console.log("Coming soon...")
 
 ---
 
-## Request & Reconstruct a Signature 
-Once a payload is created and ready to sign, a signature request is made by calling `sign` on the [MPC smart contract](../1.concepts/abstraction/chain-signatures.md#2-signature-request).
+## 2. Signature Request
 
-The method expects the `payload` to be signed for the target blockchain, and a `path` representing the account that should be used to sign the payload (learn more [here](../1.concepts/abstraction/chain-signatures.md#2-signature-request)).
+Once a payload is created and ready to sign, a signature request is made by calling `sign` on the deployed smart contract `multichain.near`. This method takes two parameters:
+
+  1. **payload:** The payload (transaction, message, data, etc.) to be signed for the target blockchain
+  2. **path:** The account that should be used to sign the payload (e.g. ethereum-1)
+
+```rust
+  pub fn sign(payload: [u8; 32], path: String) -> Signature
+```
+
+_[See the full code in Github](https://github.com/near/mpc-recovery/blob/bc85d66833ffa8537ec61d0b22cd5aa96fbe3197/contract/src/lib.rs#L263)_
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ Ethereum">

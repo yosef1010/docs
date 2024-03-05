@@ -25,23 +25,15 @@ _Diagram of a chain signature in NEAR_
 
 There are four steps involved on Chain Signatures:
 
-1. [Create a Payload](/abstraction/chain-signatures/#create-a-payload) - The user creates the transaction / message they want to sign
-2. [Signature Request](#2-request-signature) - The user calls the NEAR `multichain` contract, requesting to sign the transaction
+1. [Create a Payload](/abstraction/chain-signatures/#1-create-a-payload) - The user creates the transaction / message they want to sign
+2. [Signature Request](/abstraction/chain-signatures/#2-signature-request) - The user calls the NEAR `multichain` contract, requesting to sign the transaction
 3. [MPC Signing Service](#3-sign-with-mpc) - A service captures the call, and returns the signed the transaction for the user
 4. [Relay Signed Payload](#4-relaying-the-signature) - The signed payload is then sent to the destination chain for execution.
 
 ### 2. Signature Request
 
-Once a payload is created and ready to sign, a signature request is made by calling `sign` on the deployed smart contract `multichain.near`. This method takes two parameters:
-  1. **payload:** The payload (transaction, message, data, etc.) to be signed for the target blockchain
-  2. **path:** A name representing the account that should be used to sign the payload (e.g. ethereum-1)
 
-```rust
-  pub fn sign(payload: [u8; 32], path: String) -> Signature
-```
-_[See the full code in Github](https://github.com/near/mpc-recovery/blob/bc85d66833ffa8537ec61d0b22cd5aa96fbe3197/contract/src/lib.rs#L263)_
-
-For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **(payload)** using the `ethereum-1` account **(path)**.
+  For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **(payload)** using the `ethereum-1` account **(path)**.
 
 After a request is made, the `sign` method starts recursively calling itself in order to wait while the [MPC signing service](#3-mpc-signing-service) signs the payload.
 
@@ -90,6 +82,7 @@ At this point - assuming the contract didn't run out of gas waiting - the contra
 To simplify relaying the transaction, we are building an indexer that will automatically capture the signature, and submit it to the target chain using a multi-chain [relayer](relayers.md).
 
 :::tip
+
 A multi-chain [relayer](relayers.md) is a service that knows how to relay signed transactions into their target networks so they are executed on-chain.
 :::
 
